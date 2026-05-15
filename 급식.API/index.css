@@ -1,0 +1,390 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.6);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #8b5cf6;
+    --item-bg: rgba(255, 255, 255, 0.03);
+    --item-bg-hover: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Dynamic Ambient Background */
+.background-effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.blob {
+    position: absolute;
+    filter: blur(80px);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blob-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--accent-primary);
+    top: -100px;
+    left: -100px;
+}
+
+.blob-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--accent-secondary);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.2); }
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: #60a5fa;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-family: 'Outfit', sans-serif;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    font-weight: 300;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 28px;
+    padding: 32px 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.8s ease-out;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-panel:hover {
+    transform: translateY(-4px);
+}
+
+/* Date Display / Selector */
+.date-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.date-display {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.date-input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+}
+
+/* Chrome/Safari 달력 아이콘 색상 반전 (어두운 배경용) */
+.date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.date-input::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+.relative-day {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #60a5fa;
+    transform: scale(1.05);
+}
+
+.icon-btn:active {
+    transform: scale(0.95);
+}
+
+.date-display {
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.relative-day {
+    font-size: 0.85rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    background: rgba(59, 130, 246, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+/* Menu list */
+.menu-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-list li {
+    background: var(--item-bg);
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideInRight 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.3s ease;
+}
+
+.menu-list li:hover {
+    background: var(--item-bg-hover);
+    border-color: rgba(255, 255, 255, 0.05);
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.menu-name {
+    font-size: 1.05rem;
+    font-weight: 500;
+    position: relative;
+    padding-left: 12px;
+}
+
+.menu-name::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 16px;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+    border-radius: 4px;
+}
+
+/* 맛있는 메뉴 형광펜 효과 */
+.delicious {
+    background: rgba(16, 185, 129, 0.1) !important;
+    border: 1px solid rgba(52, 211, 153, 0.3) !important;
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.15);
+}
+
+.delicious .menu-name {
+    color: #34d399;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.4);
+}
+
+.delicious .menu-name::before {
+    background: linear-gradient(to bottom, #10b981, #34d399);
+}
+
+.allergy-info {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Calorie Badge */
+.calorie-badge {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(2fb, 146, 60, 0.1));
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.calorie-badge .icon {
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+.calorie-badge .value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fca5a5;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* States (Loading/Error) */
+.state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    gap: 16px;
+    color: var(--text-secondary);
+    min-height: 200px;
+}
+
+.error-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Spinner */
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(255, 255, 255, 0.05);
+    border-left-color: var(--accent-primary);
+    border-right-color: var(--accent-secondary);
+    border-radius: 50%;
+    animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+}
+
+/* Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 16px;
+    }
+    .glass-panel {
+        padding: 24px 16px;
+    }
+}
